@@ -6,14 +6,26 @@
 /*   By: sfernand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 15:45:05 by sfernand          #+#    #+#             */
-/*   Updated: 2023/01/02 15:41:17 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/01/02 17:05:10 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
 
-int main()
+char	*rad_file(int fd, char *res_buff)
 {
-	int buffer_size;
-	printf("%d", buffer_size);
-	return (0);
+	char	*buffer;
+	int		n_read;
+
+	if (!res_buff)
+		res_buff = ft_calloc(1, 1);
+}
+
+char *get_next_line(int fd)
+{
+	static char	*buffer;
+	char		*line;
+
+	buffer = rad_file(fd, buffer);
+	if (!buffer)
+		return (NULL);
 }
