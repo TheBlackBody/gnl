@@ -6,47 +6,38 @@
 /*   By: sfernand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:21:51 by sfernand          #+#    #+#             */
-/*   Updated: 2023/01/04 16:20:47 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/01/06 19:23:35 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
 
 size_t	ft_strlen(const char *a)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (a[i] != 0)
-	{
+	while (a[i] != '\0')
 		i++;
-	}
 	return (i);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
+	size_t	i;
+	size_t	j;
 	char	*dest;
-	int		i;
-	int		n;
-	int		len1;
-	int		len2;
 
-	if (!s1 || !s2)
+	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	i = 0;
-	dest = malloc(len1 + len2 + 1);
-	if (!dest)
-		return (0);
-	while (s1[i])
-	{
+	dest = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (dest == NULL)
+		return (NULL);
+	i = -1;
+	while (s1[++i] != '\0')
 		dest[i] = s1[i];
-		i++;
-	}
-	n = 0;
-	while (s2[n])
-		dest[i++] = s2[n++];
+	j = 0;
+	while (s2[j] != '\0')
+		dest[i++] = s2[j++];
 	dest[i] = '\0';
 	return (dest);
 }
@@ -86,10 +77,10 @@ void	*ft_calloc(size_t count, size_t size)
 	char		*dest;
 	size_t		n;
 
-	n = (count * size);
+	n = ((count * size));
 	if (count != 0 && size >= SIZE_MAX / count)
 		return (0);
-	dest = (void *)malloc(n);
+	dest = (char *)malloc(sizeof(char *) * n);
 	if (!dest)
 	{
 		return (NULL);
@@ -97,3 +88,4 @@ void	*ft_calloc(size_t count, size_t size)
 	ft_bzero(dest, n);
 	return (dest);
 }
+
